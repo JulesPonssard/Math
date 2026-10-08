@@ -1,0 +1,518 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+ \usepackage{amsmath}
+\usepackage[a4paper,top=1.8cm,bottom=1.8cm,left=2cm,right=2cm]{geometry}
+\usepackage{amssymb}
+
+\begin{document}
+
+\section*{Question 1}
+
+On considère trois variables aléatoires binaires
+\[
+X_1,X_2,X_3\in\{0,1\},
+\]
+telles que
+\[
+X_1 \perp\!\!\!\perp X_2,
+\qquad
+P(X_1=1)=P(X_2=1)=\frac12,
+\]
+et
+\[
+X_3
+=
+I(X_1=1,X_2=0)
++
+I(X_1=0,X_2=1).
+\]
+
+\subsection*{a) Calcul de $P(X_3=1)$ et $P(X_3=0)$}
+
+Posons
+\[
+A=\{X_1=1,X_2=0\},
+\qquad
+B=\{X_1=0,X_2=1\}.
+\]
+
+On a $X_3=1 \iff A\cup B$. Les événements $A$ et $B$ sont disjoints et, comme
+$X_1$ et $X_2$ sont indépendantes,
+\[
+P(A)=P(X_1=1)P(X_2=0)=\frac12\cdot\frac12=\frac14,
+\qquad
+P(B)=\frac14.
+\]
+et de même
+\[
+P(B)=\frac14.
+\]
+
+Ainsi,
+\[
+P(X_3=1)
+=
+P(A)+P(B)
+=
+\frac14+\frac14
+=
+\frac12.
+\]
+
+Par conséquent,
+\[
+P(X_3=0)
+=
+1-P(X_3=1)
+=
+\frac12.
+\]
+
+Donc
+\[
+P(X_3=1)=P(X_3=0)=\frac12.
+\]
+
+\subsection*{b) Montrer que $X_3 \perp\!\!\!\perp X_1$ et $X_3 \perp\!\!\!\perp X_2$}
+
+Si $X_1=1$, alors
+\[
+X_3=1
+\iff X_2=0.
+\]
+
+Par conséquent,
+\[
+P(X_3=1\mid X_1=1)
+=
+P(X_2=0\mid X_1=1).
+\]
+
+Comme $X_1$ et $X_2$ sont indépendantes,
+\[
+P(X_2=0\mid X_1=1)
+=
+P(X_2=0)
+=
+\frac12.
+\]
+
+Or,
+\[
+P(X_3=1)=\frac12.
+\]
+
+Ainsi,
+\[
+P(X_3=1\mid X_1=1)
+=
+P(X_3=1).
+\]
+
+De même, si $X_1=0$, alors
+\[
+X_3=1
+\iff X_2=1,
+\]
+et donc
+\[
+P(X_3=1\mid X_1=0)
+=
+P(X_2=1)
+=
+\frac12
+=
+P(X_3=1).
+\]
+
+On en déduit que
+\[
+X_3 \perp\!\!\!\perp X_1.
+\]
+
+Par symétrie, on obtient également
+\[
+X_3 \perp\!\!\!\perp X_2.
+\]
+
+\subsection*{c) Montrer que $X_3 \not\!\perp\!\!\!\perp (X_1,X_2)$}
+
+Considérons le cas
+\[
+X_1=1,
+\qquad
+X_2=0.
+\]
+
+Par définition de $X_3$, on a alors nécessairement
+\[
+X_3=1.
+\]
+
+Ainsi,
+\[
+P(X_3=1\mid X_1=1,X_2=0)=1.
+\]
+
+Or,
+\[
+P(X_3=1)=\frac12.
+\]
+
+Donc
+\[
+P(X_3=1\mid X_1=1,X_2=0)
+\neq
+P(X_3=1),
+\]
+ce qui montre que
+\[
+X_3 \not\!\perp\!\!\!\perp (X_1,X_2).
+\]
+
+\subsection*{d) Bonus : existence d'une SRB carte parfaite de $P$}
+
+On a montré que
+\[
+X_1 \perp\!\!\!\perp X_2,
+\qquad
+X_1 \perp\!\!\!\perp X_3,
+\qquad
+X_2 \perp\!\!\!\perp X_3.
+\]
+
+Les trois variables sont donc indépendantes deux à deux.
+
+Cependant,
+\[
+X_3 \not\!\perp\!\!\!\perp (X_1,X_2).
+\]
+
+Une SRB sans aucune arête représenterait une indépendance mutuelle complète, notamment
+\[
+X_1 \perp\!\!\!\perp (X_2,X_3),
+\]
+ce qui est faux.
+
+À l'inverse, si l'on ajoute une arête entre deux variables, celles-ci ne sont plus d-séparées marginalement, alors qu'elles doivent être indépendantes.
+
+Ainsi, aucune SRB ne peut représenter exactement toutes les indépendances de $P$.
+
+Donc,
+\[
+\text{il n'existe pas de SRB qui soit une carte parfaite des indépendances de }P.
+\]
+
+
+\section*{Question 2}
+
+On considère $x_1,\ldots,x_n$ des réalisations indépendantes d'une variable aléatoire
+\[
+X \sim \operatorname{Poisson}(\lambda),
+\]
+dont la fonction de masse est
+\[
+p_\lambda(x)
+=
+\frac{\lambda^x e^{-\lambda}}{x!},
+\qquad x\in\mathbb{N}.
+\]
+
+\textbf{a) Estimateur du maximum de vraisemblance}
+
+Comme les observations sont indépendantes, la vraisemblance s'écrit
+\[
+L(\lambda)
+=
+\prod_{i=1}^n p_\lambda(x_i)
+=
+\prod_{i=1}^n
+\frac{\lambda^{x_i}e^{-\lambda}}{x_i!}.
+\]
+
+On peut regrouper les termes :
+\[
+L(\lambda)
+=
+\frac{
+\lambda^{\sum_{i=1}^n x_i}
+e^{-n\lambda}
+}{
+\prod_{i=1}^n x_i!
+}.
+\]
+
+On considère la log-vraisemblance
+\[
+\ell(\lambda)=\log L(\lambda),
+\]
+qui admet les mêmes maximiseurs que $L(\lambda)$ puisque le logarithme est strictement croissant.
+
+Ainsi,
+\[
+\ell(\lambda)
+=
+\left(\sum_{i=1}^n x_i\right)\log(\lambda)
+-
+n\lambda
+-
+\sum_{i=1}^n \log(x_i!).
+\]
+
+En posant
+\[
+\bar{x}
+=
+\frac{1}{n}\sum_{i=1}^n x_i,
+\]
+on a
+\[
+\sum_{i=1}^n x_i=n\bar{x}.
+\]
+
+Donc
+\[
+\ell(\lambda)
+=
+n\bar{x}\log(\lambda)
+-
+n\lambda
+-
+\sum_{i=1}^n \log(x_i!).
+\]
+
+On dérive par rapport à $\lambda$ :
+\[
+\ell'(\lambda)
+=
+\frac{n\bar{x}}{\lambda}
+-
+n.
+\]
+
+On cherche le point critique en posant
+\[
+\ell'(\lambda)=0.
+\]
+
+On obtient
+\[
+\frac{n\bar{x}}{\lambda}-n=0,
+\]
+donc
+\[
+\frac{\bar{x}}{\lambda}=1.
+\]
+
+Ainsi,
+\[
+\hat{\lambda}=\bar{x}.
+\]
+
+Pour vérifier qu'il s'agit bien d'un maximum, on calcule la dérivée seconde :
+\[
+\ell''(\lambda)
+=
+-\frac{n\bar{x}}{\lambda^2}.
+\]
+
+Comme au moins une des observations est non nulle, on a $\bar{x}>0$, donc
+\[
+\ell''(\lambda)<0.
+\]
+
+La log-vraisemblance est donc concave et le point critique correspond bien à un maximum.
+
+Ainsi,
+\[
+\hat{\lambda}
+=
+\bar{x}
+=
+\frac{1}{n}\sum_{i=1}^n x_i.
+\]
+
+\bigskip
+
+\textbf{b) Valeur numérique de l'estimateur}
+
+Pour l'échantillon
+\[
+3,\ 2,\ 4,\ 0,\ 1,\ 3,\ 2,\ 5,\ 2,\ 1,
+\]
+on a
+\[
+\bar{x}
+=
+\frac{3+2+4+0+1+3+2+5+2+1}{10}.
+\]
+
+Donc
+\[
+\bar{x}
+=
+\frac{23}{10}
+=
+2.3.
+\]
+
+Finalement,
+\[
+\hat{\lambda}
+=
+\bar{x}
+=
+2.3.
+\]
+\section*{Question 3}
+
+\subsection*{a) Réseau $G_1$}
+
+On considère la SRB
+\[
+X_1 \longrightarrow X_2 \longrightarrow X_3.
+\]
+
+\subsubsection*{(i) Ensemble des indépendances globales $I(G_1)$}
+
+Dans le graphe
+\[
+X_1 \longrightarrow X_2 \longrightarrow X_3,
+\]
+le seul chemin entre $X_1$ et $X_3$ passe par $X_2$.
+
+Le conditionnement sur $X_2$ bloque donc ce chemin.
+
+Ainsi,
+\[
+I(G_1)
+=
+\left\{
+X_1 \perp\!\!\!\perp X_3 \mid X_2
+\right\}.
+\]
+
+\subsubsection*{(ii) SRB I-équivalentes à $G_1$}
+
+Deux SRB sont I-équivalentes si elles ont le même squelette et les mêmes v-structures.
+
+Le squelette de $G_1$ est
+\[
+X_1-X_2-X_3.
+\]
+
+Le graphe $G_1$ ne contient aucune v-structure.
+
+Les orientations possibles conservant le même squelette sans créer de v-structure sont donc
+\[
+X_1 \longrightarrow X_2 \longrightarrow X_3,
+\]
+
+\[
+X_1 \longleftarrow X_2 \longrightarrow X_3,
+\]
+
+et
+\[
+X_1 \longleftarrow X_2 \longleftarrow X_3.
+\]
+
+Le graphe
+\[
+X_1 \longrightarrow X_2 \longleftarrow X_3
+\]
+n'est pas I-équivalent à $G_1$, car il contient une v-structure en $X_2$.
+
+Ainsi, il y a exactement trois SRB I-équivalentes à $G_1$, en comptant $G_1$ lui-même.
+
+\subsubsection*{(iii) $G_1$ est-il une carte parfaite des indépendances de $P$ ?}
+
+La distribution est donnée par
+\[
+P(X_1,X_2,X_3)
+=
+0.2^{X_1+X_3}
+0.8^{2-X_1-X_3}
+\left(
+\frac{X_3+0.5}{2}
+\right)^{X_2}
+\left(
+1-\frac{X_3+0.5}{2}
+\right)^{1-X_2}.
+\]
+
+On peut réécrire
+\[
+0.2^{X_1+X_3}
+0.8^{2-X_1-X_3}
+\]
+sous la forme
+\[
+\left(
+0.2^{X_1}0.8^{1-X_1}
+\right)
+\left(
+0.2^{X_3}0.8^{1-X_3}
+\right).
+\]
+
+Ainsi,
+\[
+P(X_1,X_2,X_3)
+=
+\left(
+0.2^{X_1}0.8^{1-X_1}
+\right)
+\left[
+0.2^{X_3}0.8^{1-X_3}
+\left(
+\frac{X_3+0.5}{2}
+\right)^{X_2}
+\left(
+1-\frac{X_3+0.5}{2}
+\right)^{1-X_2}
+\right].
+\]
+
+On peut donc écrire
+\[
+P(X_1,X_2,X_3)
+=
+f(X_1)g(X_2,X_3).
+\]
+
+Cette factorisation implique que
+\[
+X_1 \perp\!\!\!\perp (X_2,X_3).
+\]
+
+En particulier,
+\[
+X_1 \perp\!\!\!\perp X_2
+\]
+et
+\[
+X_1 \perp\!\!\!\perp X_3.
+\]
+
+Or ces indépendances marginales ne sont pas représentées par $G_1$. En effet, dans
+\[
+X_1 \longrightarrow X_2 \longrightarrow X_3,
+\]
+$X_1$ et $X_2$ ne sont pas d-séparées.
+
+Ainsi,
+\[
+I(G_1)\neq I(P).
+\]
+
+Par conséquent,
+\[
+G_1
+\text{ n'est pas une carte parfaite des indépendances de }P.
+\]
+
+
+
+
+\end{document}
