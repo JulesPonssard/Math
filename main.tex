@@ -4,6 +4,7 @@
 \usepackage[a4paper,top=1.8cm,bottom=1.8cm,left=2cm,right=2cm]{geometry}
 \usepackage{amssymb}
 \usepackage{tikz} % Requis pour les graphes des questions 5 et 6
+\usepackage{float}
 
 % Commande personnalisée pour le symbole d'indépendance
 \newcommand{\indep}{\perp \!\!\! \perp}
@@ -651,11 +652,11 @@ En identifiant cette forme avec le produit demandé $\phi_1(A)\phi_2(B)\phi_3(A,
 \end{itemize}
 \
 
-\subsection*{Question 7}
+\section*{Question 7}
 
-\subsubsection*{a) SRB}
+\subsection*{a) SRB}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{Q7.png}
     \caption{SRB de la situation décrite par Claude}
@@ -663,7 +664,7 @@ En identifiant cette forme avec le produit demandé $\phi_1(A)\phi_2(B)\phi_3(A,
 
 L'hypothèse de Claude est validée par les énoncés rapportés : la solvabilité des clients dépend de leur fiabilité et de leur revenus futurs.
 
-\subsubsection*{b) Distribution jointe}
+\subsection*{b) Distribution jointe}
 
 Par simplicité, on désigne chaque variable par sa section soulignée en rouge dans la figure ci-dessus. \\
 La distribution jointe s'exprime alors :
@@ -676,7 +677,7 @@ La distribution jointe s'exprime alors :
 &\quad \cdot \mathbb{P}(\text{Fi} \mid \text{Ag, H}) \cdot \mathbb{P}(\text{S} \mid \text{Fi, Fu})
 \end{align*}
 
-\subsubsection*{c) Table de probabilités conditionnelles : P(Ratio | Âge)}
+\subsection*{c) Table de probabilités conditionnelles : P(Ratio | Âge)}
 
 L'éenoncé 3 indique : "Plus un(e) client(e) est âgé(e), plus il/elle a tendance à avoir un faible ratio dettes vs revenus;"
 
@@ -684,7 +685,7 @@ L'éenoncé 3 indique : "Plus un(e) client(e) est âgé(e), plus il/elle a tenda
 
 Voici alors un exemple de valeurs cohérentes avec l'énoncé :
 
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{1.3}
     \begin{tabular}{|l|c|c|c|c|} \hline
